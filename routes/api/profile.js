@@ -25,9 +25,6 @@ router.get('/me',auth, async (req, res) => {
   }
 });
 
-// @route    POST api/profile
-// @desc     Create or update user profile
-// @access   Private
 router.post(
   '/',
   [
@@ -62,7 +59,6 @@ router.post(
       linkedin
     } = req.body;
 
-    // Build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
     if (company) profileFields.company = company;
@@ -224,7 +220,7 @@ router.put(
       check('from', 'From date is required')
         .not()
         .isEmpty()
-    ]
+    ] 
   ],
   async (req, res) => {
     const errors = validationResult(req);
